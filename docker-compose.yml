@@ -43,6 +43,8 @@ services:
       - 80:80
     volumes:
      - ./public:/rails/public
+     - /etc/letsencrypt/live/grabli.co/fullchain.pem:/etc/nginx/ssl/fullchain.pem
+     - /etc/letsencrypt/live/grabli.co/privkey.pem:/etc/nginx/ssl/privkey.pem
 
 
 volumes:
