@@ -17,6 +17,6 @@ ActiveRecord::Base.connection.execute(
         floor(random() * (1000000 - 150 + 1) + 150)::integer,  -- Generating a score from 150 to 1,000,000
         now(),
         now()
-    FROM generate_series(1, 1000000) AS id;
+    FROM generate_series(1, 150000000) AS id;
   "
 )
