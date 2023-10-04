@@ -78,12 +78,14 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  fd = IO.sysopen("/proc/1/fd/1","w")
+  io = IO.new(fd,"w")
+  io.sync = true
+
+  config.logger = Logger.new(io)
+
   # Use a different logger for distributed setups.
   # require "syslog/logger"
-  config.logger = ActiveSupport::Logger.new(STDOUT).tap do |logger|
-    logger.formatter = config.log_formatter
-    config.logger = ActiveSupport::TaggedLogging.new(logger)
-  end
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
