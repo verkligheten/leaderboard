@@ -1,9 +1,9 @@
-namespace :seed do
-  # rake 'seed:leaderboard[300]'
-  desc 'Populate Leaderboard with users'
-  task :leaderboard, [:count] => :environment do |_t, args|
-    count = args[:count]&.to_i || 1_000_000
+class PopulateLeaderboard
+  def initialize count: 1_000_000
+    @count = count
+  end
 
+  def call
     ActiveRecord::Base.connection.execute(
       "
         -- Create a function that returns a random string from a fixed array
@@ -23,9 +23,9 @@ namespace :seed do
             floor(random() * (1000000 - 150 + 1) + 150)::integer,  -- Generating a score from 150 to 1,000,000
             now(),
             now()
-        FROM generate_series(1, #{count}) AS id;
+        FROM generate_series(1, #{@count}) AS id;
       "
     )
-
   end
+
 end
