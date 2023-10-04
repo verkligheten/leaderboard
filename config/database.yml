@@ -83,5 +83,3 @@ test:
 production:
   <<: *default
   database: leaderboard_production
-  username: leaderboard
-  password: <%= ENV["LEADERBOARD_DATABASE_PASSWORD"] %>
