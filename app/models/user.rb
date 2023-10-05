@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   scope :by_score_range, ->(gte, lte) {
     where(
       arel_table[:score].gt(gte)
