@@ -1,5 +1,5 @@
 class PopulateLeaderboardJob < ApplicationJob
-  queue_as :default
+  queue_as :leaders
 
   def perform(*args)
     PopulateLeaderboard.new.call
