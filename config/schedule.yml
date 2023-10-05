@@ -5,4 +5,4 @@ update_users_score:
 update_leaders:
   cron: "*/1 * * * *"
   class: "PopulateLeadersJob"
-  queue: default
+  queue: leaders
