@@ -8,7 +8,7 @@ class Api::V1::LeaderboardController < ApplicationController
             .order(score: :desc)
             .limit(100)
     else
-      @users = Leader.all
+      @users = Leader.order(score: :desc).all
     end
 
     render json: @users
