@@ -9,4 +9,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root to: "home#index"
+
+  namespace :api do
+    namespace :v1 do
+      get :leaderboard, controller: :leaderboard, action: :index
+    end
+  end
 end
