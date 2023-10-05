@@ -1,4 +1,4 @@
-# Data Seed.
+# Data Seed
 
 ```ruby
 # This will generate 1M records.
@@ -35,7 +35,7 @@ class UpdateUsersScoreJob < ApplicationJob
 end
 ```
 
-# Every second some amount of users should get a new score. User could get or loose X scores.
+# Every second some amount of users should get a new score. User could get or loose X scores
 ```ruby
 class UpdateUsersScoreContainerJob < ApplicationJob
   queue_as :default
@@ -65,26 +65,24 @@ updated_at: DateTime
 
 # API
 A query that returns a list of all world leaders, sorted by number of points earned in descending order.
-  https://www.grabli.co/api/v1/leaderboard.json
+https://www.grabli.co/api/v1/leaderboard.json
 
 A request that returns a list of leaders for a specific country. The first places will be those who earned the most points.
-  https://www.grabli.co/api/v1/leaderboard.json?country=ua
+https://www.grabli.co/api/v1/leaderboard.json?country=ua
 
 # Active Admin
 For development environment you can seed admin user with
-  `bin/rails db:seed`
+`bin/rails db:seed`
 
-### Credentials for PROD admin:
-
-  https://www.grabli.co/admin/login
-  
-  `login: admin@example.com`
-  
-  `pass: password`
+Credentials for PROD admin (https://www.grabli.co/admin/login)
+```
+login: admin@example.com
+pass: password
+```
 
 # Data simulation
     
-## One-time generation of 150 million users.
+## One-time generation of 150 million users
     
 ```ruby
 class PopulateLeaderboard
@@ -119,7 +117,7 @@ class PopulateLeaderboard
 end
 ```
 
-## Every second the data is randomly updated.
+## Every second the data is randomly updated
 Sidekiq Cron Config
 ```yaml
 update_users_score:
