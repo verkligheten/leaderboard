@@ -2,6 +2,9 @@ class PopulateLeadersJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    PopulateLeaders.new.call
+    2.times do
+      PopulateLeaders.new.call
+      sleep 15
+    end
   end
 end
