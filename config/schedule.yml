@@ -2,3 +2,7 @@ update_users_score:
   cron: "*/1 * * * *" # execute at every 30 minutes
   class: "UpdateUsersScoreContainerJob"
   queue: default
+update_leaders:
+  cron: "*/1 * * * *"
+  class: "PopulateLeadersJob"
+  queue: default
