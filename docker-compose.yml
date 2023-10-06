@@ -26,6 +26,7 @@ services:
       - redis
     env_file:
       - .env
+    restart: unless-stopped
   rails:
     build:
       context: .
@@ -50,7 +51,11 @@ services:
      - /etc/letsencrypt/live/grabli.co/fullchain.pem:/etc/nginx/ssl/fullchain.pem
      - /etc/letsencrypt/live/grabli.co/privkey.pem:/etc/nginx/ssl/privkey.pem
     restart: on-failure
-
+  restarter:
+    image: docker:cli
+    volumes: ["/var/run/docker.sock:/var/run/docker.sock"]
+    command: ["/bin/sh", "-c", "while true; do sleep 1800; docker compose restart leaderboard-sidekiq-1; done"]
+    restart: unless-stopped
 
 volumes:
   redis:
