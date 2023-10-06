@@ -54,7 +54,7 @@ services:
   restarter:
     image: docker:cli
     volumes: ["/var/run/docker.sock:/var/run/docker.sock"]
-    command: ["/bin/sh", "-c", "while true; do sleep 1800; docker compose restart leaderboard-sidekiq-1; done"]
+    command: ["/bin/sh", "-c", "while true; do sleep 1800; docker compose -p leaderboard restart; done"]
     restart: unless-stopped
 
 volumes:
